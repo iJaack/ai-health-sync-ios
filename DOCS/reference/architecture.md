@@ -472,7 +472,7 @@ graph TB
 - **[Swift 6 Concurrency](../learn/03-swift6.md)** - How actors work
 - **[Network Server API](./api/network-server.md)** - Server endpoints
 - **[Security Model](./security.md)** - Certificate-based pairing
-- **[Data Flow](./data-flow.md)** - Request/response lifecycle
+- **[Data Flow](./data-flows.md)** - Request/response lifecycle
 
 ---
 
