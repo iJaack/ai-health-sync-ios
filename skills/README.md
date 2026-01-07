@@ -28,6 +28,18 @@ cp -r skills/healthkit-sync ~/.clawdbot/skills/
 
 Skills in this directory are automatically available when Claude Code is run from this repository.
 
+### ClawdHub (Public Registry)
+
+Publish to [ClawdHub](https://clawdhub.com) for public distribution:
+
+```bash
+cd skills/healthkit-sync
+zip -r healthkit-sync-1.0.0.zip SKILL.md TESTING.md references/
+# Upload at https://clawdhub.com/publish
+```
+
+See [HOWTO_CLAWDHUB.md](./healthkit-sync/HOWTO_CLAWDHUB.md) for detailed instructions.
+
 ### Other Agent Skills Compatible Tools
 
 Copy the skill folder to your tool's skills directory:
@@ -41,6 +53,8 @@ Copy the skill folder to your tool's skills directory:
 skills/
 └── healthkit-sync/
     ├── SKILL.md              # Main skill file (YAML frontmatter + instructions)
+    ├── TESTING.md            # Testing documentation
+    ├── HOWTO_CLAWDHUB.md     # ClawdHub publishing guide
     └── references/
         ├── CLI-REFERENCE.md  # Detailed CLI documentation
         ├── SECURITY.md       # mTLS, certificate pinning patterns
@@ -72,4 +86,5 @@ Instructions for the agent...
 
 - [Agent Skills Specification](https://agentskills.io/specification)
 - [Anthropic Skills Repository](https://github.com/anthropics/skills)
+- [ClawdHub Skill Registry](https://clawdhub.com)
 - [ClawdBot Skills Documentation](https://docs.clawd.bot/tools/skills)
