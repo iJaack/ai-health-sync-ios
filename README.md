@@ -54,16 +54,20 @@ In Xcode: Press **⌘R** to build and run on iPhone 16 simulator.
 
 ### Step 2: Install macOS CLI
 
-**Option A: Homebrew** *(requires tap setup)*
+**Option A: Homebrew (Recommended)**
 
 ```bash
-# Create a local tap and install
-brew tap-new local/healthsync
-cp Formula/healthsync.rb $(brew --repository)/Library/Taps/local/homebrew-healthsync/Formula/
-brew install local/healthsync/healthsync
+brew tap mneves75/tap
+brew install healthsync
 ```
 
-**Option B: Build from Source (Recommended)**
+**Option B: Download from Release**
+
+Download pre-built binaries from [GitHub Releases](https://github.com/mneves75/ai-health-sync-ios/releases):
+- Apple Silicon (M1/M2/M3): `healthsync-VERSION-macos-arm64.tar.gz`
+- Intel: `healthsync-VERSION-macos-x86_64.tar.gz`
+
+**Option C: Build from Source**
 
 ```bash
 cd macOS/HealthSyncCLI
@@ -71,7 +75,7 @@ swift build -c release
 # Binary at: .build/release/healthsync
 ```
 
-**⚠️ Important:** The CLI is a Swift Package - use `swift build` not `bun install`.
+**Note:** The CLI is a Swift Package - use `swift build` (not npm/bun).
 
 ---
 
@@ -80,7 +84,7 @@ swift build -c release
 1. **On iOS App:** Tap "Start Server" → "Show QR Code"
 2. **On Mac CLI:**
    ```bash
-   ./build/debug/healthsync scan  # Scans QR from clipboard
+   healthsync scan  # Scans QR from clipboard
    ```
 
 ---
@@ -88,7 +92,7 @@ swift build -c release
 ### Step 4: Fetch Health Data
 
 ```bash
-./build/debug/healthsync fetch --types steps --start 2025-01-01
+healthsync fetch --types steps --start 2026-01-01
 ```
 
 **✅ Success!** You now have your health data on your Mac.
