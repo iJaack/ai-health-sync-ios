@@ -45,6 +45,7 @@ How-to guides are **recipes for solving specific problems**. Unlike tutorials, t
 | [Create Custom Endpoint](./add-endpoint.md) | Add server API route | 45 min |
 | [Write Unit Tests](./write-tests.md) | Test your code | 20 min |
 | [Debug Network Issues](./debug-network.md) | Troubleshoot connections | 15 min |
+| [Deploy Agent Skill](./deploy-skill.md) | Install and share the AI skill | 5 min |
 
 ### Troubleshooting
 
