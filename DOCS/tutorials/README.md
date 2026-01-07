@@ -23,11 +23,12 @@ Tutorials are **lessons that take you by the hand** through a series of steps to
 
 | Tutorial | Time | What You'll Build |
 |----------|------|-------------------|
+| [Pairing Video Guide](./pairing-video-guide.md) | 5 min | Connect iPhone and Mac with video walkthrough |
 | Your First Health Data Sync | 30 min | Sync steps from iPhone to Mac |
 | Building a Custom Data Type | 45 min | Add blood oxygen support |
 | Creating a Custom View | 60 min | Build a heart rate graph |
 
-*Note: Tutorial content is being developed. See [Learning Guide](../learn/00-welcome.md) for comprehensive learning resources.*
+*Note: Additional tutorial content is being developed. See [Learning Guide](../learn/00-welcome.md) for comprehensive learning resources.*
 
 ### Advanced Tutorials
 
