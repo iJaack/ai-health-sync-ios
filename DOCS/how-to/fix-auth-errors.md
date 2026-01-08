@@ -273,9 +273,9 @@ ping -c 5 192.168.1.100
 **2. Server overloaded**
 
 On iPhone, restart the server:
-1. Tap "Stop Server"
+1. Tap "Stop Sharing"
 2. Wait 5 seconds
-3. Tap "Start Server"
+3. Tap "Start Sharing"
 
 **3. Increase timeout**
 ```bash

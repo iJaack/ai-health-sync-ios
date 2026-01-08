@@ -60,9 +60,9 @@ Last sync: 2026-01-07 10:30:00
 **2. Regenerate QR code**
 
 On iOS app:
-1. Tap "Stop Server"
-2. Tap "Start Server" again
-3. Tap "Show QR Code"
+1. Tap "Stop Sharing"
+2. Tap "Start Sharing" again (QR code regenerates automatically)
+3. Or tap "Refresh Code" to regenerate without stopping
 
 **3. Use manual entry**
 

@@ -11,6 +11,8 @@
 - [ ] macOS CLI built and available
 - [ ] Both devices on same network
 
+> **Video Demo:** See [Pairing Video Guide](../tutorials/pairing-video-guide.md) for a visual walkthrough (18 seconds).
+
 ---
 
 ## Goal
@@ -21,28 +23,25 @@ Pair your iOS device with your Mac so they can communicate securely using mutual
 
 ## Steps
 
-### Step 1: Start the iOS Server
+### Step 1: Start Sharing and Generate QR Code
 
-1. Open the iOS Health Sync app
-2. Toggle the health data types you want to sync
-3. Tap **"Start Server"**
-4. Note the server status shows **"Server Running: YES"**
+1. Open the **HealthSync** app on your iPhone
+2. Optionally tap **"Request HealthKit Access"** to grant permissions
+3. Tap **"Start Sharing"** button
+4. QR code generates automatically and displays
 
-**Expected:** Server status displays green indicator with port number (default: 8080)
+**Expected:**
+- Status shows **"Running"** with port number (e.g., 62070)
+- QR code appears with pairing code and expiration time
 
----
+![Server Stopped](../assets/screenshots/01-server-stopped.png)
+![Server Running with QR](../assets/screenshots/02-server-running-qr.png)
 
-### Step 2: Generate Pairing QR Code
-
-1. Tap **"Show QR Code"** button
-2. Wait for QR code to generate (takes 1-2 seconds)
-3. QR code displays with pairing token
-
-**Important:** QR code expires after 5 minutes. If expired, generate a new one.
+**Important:** QR code expires after 5 minutes. Tap **"Refresh Code"** to generate a new one.
 
 ---
 
-### Step 3: Scan QR Code with CLI
+### Step 2: Scan QR Code with CLI
 
 **Option A: Automatic Scan (from clipboard)**
 
@@ -71,7 +70,7 @@ healthsync pair --token abc123def456
 
 ---
 
-### Step 4: Verify Pairing
+### Step 3: Verify Pairing
 
 **On CLI:**
 ```bash
@@ -89,8 +88,8 @@ healthsync status
 ```
 
 **On iOS App:**
-- Look for **"Paired Devices: 1"** indicator
-- Server status should still show **"Running"**
+- Server status shows **"Running"**
+- QR code remains visible for additional pairings
 
 ---
 
@@ -149,12 +148,13 @@ healthsync scan
 **To remove pairing:**
 
 ```bash
-# From CLI
+# From CLI - clears stored certificates
 healthsync unpair
-
-# Or from iOS app
-# Settings → Paired Devices → Select device → Remove
 ```
+
+**From iOS app:**
+1. Tap **"Stop Sharing"** to stop the server
+2. Delete and reinstall app to reset all certificates
 
 ---
 

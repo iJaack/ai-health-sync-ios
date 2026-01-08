@@ -312,7 +312,7 @@ xcodebuild -project "iOS Health Sync App.xcodeproj" -showBuildSettings | grep IP
 
 **Solution:**
 1. **Verify iOS server running:**
-   - Check "Start Server" was tapped
+   - Check "Start Sharing" was tapped
    - Look for "Server Running" status
 
 2. **Check same network:**
@@ -344,7 +344,7 @@ xcodebuild -project "iOS Health Sync App.xcodeproj" -showBuildSettings | grep IP
 
 **Solution:**
 1. **Check server status in iOS app:**
-   - Look for "Server Running: YES"
+   - Look for "Status: Running"
    - Note the port number (default: 8080)
 
 2. **Test connection manually:**

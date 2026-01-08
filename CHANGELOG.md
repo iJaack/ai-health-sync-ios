@@ -5,6 +5,26 @@ All notable changes to AI Health Sync will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Security
+
+- **GitHub Actions Hardening** - All actions pinned to SHA hashes per GitHub security guidelines
+- **Concurrency Control** - Prevent parallel release workflows
+- **Input Validation** - Environment variables used instead of inline expansion (injection prevention)
+
+### Infrastructure
+
+- **Automated Release Pipeline** - Tag-triggered builds for arm64 and x86_64 binaries
+- **Homebrew Tap** - `brew tap mneves75/tap && brew install healthsync`
+- **Source Archives** - Each release includes source.zip with SHA256 checksum
+- **ClawdHub Publishing** - `scripts/package-clawdhub.sh` for skill packaging
+
+### Documentation
+
+- **HOWTO_CLAWDHUB.md** - Step-by-step guide for publishing skills to ClawdHub
+- **Updated skills/README.md** - ClawdHub section with installation instructions
+
 ## [1.0.0] - 2026-01-07
 
 First public release of AI Health Sync.

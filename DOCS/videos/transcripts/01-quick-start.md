@@ -104,17 +104,17 @@ cd ai-health-sync-ios
 
 ### [5:00] Step 4: Start the Server
 
-**[Visual: Tapping "Start Server" button]**
+**[Visual: Tapping "Start Sharing" button]**
 
-**Speaker:** "Now tap the 'Start Server' button to start the local TLS server."
+**Speaker:** "Now tap the 'Start Sharing' button to start the local TLS server."
 
-**[Visual: Server status changing to "Running"]**
+**[Visual: Server status changing to "Running", QR code appears]**
 
-**Speaker:** "The server status will update to show that it's running. The app is now ready to accept connections on your local network."
+**Speaker:** "The server status will update to show that it's running, and the QR code appears automatically. This contains the server URL and certificate fingerprint needed for secure pairing."
 
-**[Visual: Tapping "Show QR Code" button]**
+**[Visual: QR code displayed with pairing code and expiration]**
 
-**Speaker:** "Tap 'Show QR Code' to generate the pairing QR code. This contains the server URL and certificate fingerprint needed for secure pairing."
+**Speaker:** "The QR code includes a pairing code and expiration time. You can tap 'Refresh Code' to generate a new one if needed."
 
 ---
 

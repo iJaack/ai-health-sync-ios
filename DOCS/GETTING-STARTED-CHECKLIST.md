@@ -87,7 +87,7 @@ Before you begin, make sure you have:
 #### Step 6: Start iOS Server
 
 - [ ] On iOS app, toggle the data types you want to share
-- [ ] Tap **"Start Server"** button
+- [ ] Tap **"Start Sharing"** button
 - [ ] Note the server port number shown
 - [ ] Verify server status shows "Running"
 
@@ -101,13 +101,12 @@ Before you begin, make sure you have:
 
 - [ ] Verify your iOS device appears in the list
 
-#### Step 8: Generate QR Code
+#### Step 8: Pair Devices (QR code auto-generated)
 
-- [ ] On iOS app, tap **"Show QR Code"**
-- [ ] QR code displays with pairing information
-- [ ] Tap **"Copy"** to copy QR code to clipboard
+- [ ] QR code is already visible after starting sharing
+- [ ] Tap **"Copy to Clipboard"** to copy pairing data
 
-#### Step 9: Pair Devices
+#### Step 9: Complete Pairing on Mac
 
 - [ ] On Mac, run:
   ```bash
@@ -115,7 +114,7 @@ Before you begin, make sure you have:
   ```
 
 - [ ] Verify pairing success message
-- [ ] Check iOS app shows "Paired Devices: 1"
+- [ ] Server continues running on iOS app
 
 #### Step 10: Test Data Fetch
 

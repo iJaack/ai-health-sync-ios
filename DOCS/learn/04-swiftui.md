@@ -403,7 +403,7 @@ private var actionsSection: some View {
             }) {
                 HStack {
                     Image(systemName: "stop.circle.fill")
-                    Text("Stop Server")
+                    Text("Stop Sharing")
                 }
                 .foregroundColor(.red)
             }
@@ -432,7 +432,7 @@ private var actionsSection: some View {
             }) {
                 HStack {
                     Image(systemName: "play.circle.fill")
-                    Text("Start Server")
+                    Text("Start Sharing")
                 }
                 .foregroundColor(.green)
             }
@@ -447,7 +447,7 @@ private var actionsSection: some View {
 Button(action: {
     Task { await appState.startServer() }
 }) {
-    Text("Start Server")
+    Text("Start Sharing")
 }
 ```
 

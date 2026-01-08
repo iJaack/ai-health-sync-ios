@@ -62,7 +62,7 @@ open "iOS Health Sync App/iOS Health Sync App.xcodeproj"
 
 **Try this:**
 1. Toggle a data type (Steps, Heart Rate, etc.)
-2. Tap "Start Server"
+2. Tap "Start Sharing"
 3. See server status and port number
 
 ---
@@ -185,7 +185,7 @@ swift build
 **Solutions:**
 1. **Ensure iOS server is running:**
    - Open iOS app
-   - Tap "Start Server"
+   - Tap "Start Sharing"
    - Check server status shows "Running"
 
 2. **Check same network:**

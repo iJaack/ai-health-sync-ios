@@ -46,7 +46,7 @@ ping -c 3 <iOS-IP-address>
 
 **In iOS app:**
 1. Open iOS Health Sync
-2. Verify "Server Running: YES"
+2. Verify "Status: Running"
 3. Note the port number (default: 8080)
 
 **Test HTTP connection:**

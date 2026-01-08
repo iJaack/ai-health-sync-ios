@@ -184,13 +184,13 @@ healthsync version       # Show version info
 
 ```bash
 # Fetch last week's steps as CSV
-healthsync fetch --types steps --start 2025-01-01 --end 2025-01-07 > steps.csv
+healthsync fetch --types steps --start 2026-01-01 --end 2026-01-07 > steps.csv
 
 # Fetch multiple types as JSON
 healthsync fetch --types steps,heartRate --format json | jq '.samples'
 
 # Fetch with date range
-healthsync fetch --start "2025-01-01T00:00:00Z" --end "2025-01-07T23:59:59Z"
+healthsync fetch --start "2026-01-01T00:00:00Z" --end "2026-01-07T23:59:59Z"
 ```
 
 **Full reference:** [CLI Command Reference](DOCS/learn/09-cli.md)
@@ -231,36 +231,39 @@ This prevents SSRF attacks.
 ## 📁 Project Structure
 
 ```
-ai-health-sync-ios-clawdbot/
+ai-health-sync-ios/
 ├── iOS Health Sync App/          # iOS app (Swift 6, SwiftUI)
 │   ├── App/                      # App lifecycle & state management
 │   ├── Core/                     # Models, DTOs, utilities
-│   ├── Features/                  # SwiftUI views
-│   └── Services/                  # Business logic (actors)
-│       ├── HealthKit/             # Health data access
-│       ├── Network/               # HTTP server (TLS)
-│       ├── Security/              # Certificates, pairing
+│   ├── Features/                 # SwiftUI views
+│   └── Services/                 # Business logic (actors)
+│       ├── HealthKit/            # Health data access
+│       ├── Network/              # HTTP server (TLS)
+│       ├── Security/             # Certificates, pairing
 │       └── Audit/                # Logging & compliance
 │
 ├── macOS/
 │   └── HealthSyncCLI/            # macOS CLI (Swift Package)
-│       ├── Sources/               # CLI implementation
-│       └── Tests/                 # Swift tests (39 tests)
+│       ├── Sources/              # CLI implementation
+│       └── Tests/                # Swift tests (39 tests)
 │
-└── DOCS/                          # Documentation (Diataxis)
-    ├── learn/                     # Learning guide
-    │   ├── 00-welcome.md
-    │   ├── 01-overview.md
-    │   ├── 02-architecture.md
-    │   └── ...
-    ├── tutorials/                 # Hands-on tutorials
-    ├── how-to/                    # Step-by-step guides
-    ├── reference/                 # API documentation
-    ├── explanation/               # Deep dives
-    ├── QUICKSTART.md              # 10-minute setup
-    ├── TROUBLESHOOTING.md         # Problem solving
-    ├── VERSIONS.md                # Compatibility matrix
-    └── ACCESSIBILITY.md           # WCAG 2.1 AA
+├── skills/                       # Agent Skills (agentskills.io)
+│   └── healthkit-sync/           # HealthKit sync skill
+│       ├── SKILL.md              # Main skill definition
+│       └── references/           # CLI, security, architecture docs
+│
+├── scripts/                      # Build & packaging scripts
+│   └── package-clawdhub.sh       # Package skill for ClawdHub
+│
+├── .github/workflows/            # CI/CD
+│   └── release.yml               # Automated release pipeline
+│
+└── DOCS/                         # Documentation (Diataxis)
+    ├── learn/                    # Learning guide
+    ├── tutorials/                # Hands-on tutorials
+    ├── how-to/                   # Step-by-step guides
+    ├── reference/                # API documentation
+    └── explanation/              # Deep dives
 ```
 
 ---

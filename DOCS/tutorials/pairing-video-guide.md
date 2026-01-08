@@ -16,7 +16,7 @@
 
 Watch the pairing process in action:
 
-**[pairing-demo.mp4](../assets/pairing-demo.mp4)** (6.8 MB)
+**[pairing-demo.mp4](../assets/pairing-demo.mp4)** (749 KB, 18 seconds)
 
 > **Note:** If the video doesn't play in your markdown viewer, open it directly from `DOCS/assets/pairing-demo.mp4`
 
@@ -251,11 +251,9 @@ healthsync unpair
 
 | Time | Action |
 |------|--------|
-| 0:00 | App launch, initial state |
-| 0:05 | Main screen overview |
-| 0:15 | Tap "Start Sharing" |
-| 0:20 | Server starts, QR appears |
-| 0:30 | QR code display |
+| 0:00-0:05 | Initial state: Server "Stopped", "No QR Code" |
+| 0:06-0:10 | Tap "Start Sharing" button |
+| 0:10-0:18 | Server running, QR code displayed |
 
 ---
 

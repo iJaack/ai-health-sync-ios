@@ -584,6 +584,47 @@ Would you like help implementing this?"
 
 ---
 
+## 🚀 Release Process
+
+### Creating a Release
+
+Releases are automated via GitHub Actions. To create a new release:
+
+```bash
+# 1. Update CHANGELOG.md with new version
+# 2. Commit changes
+git add CHANGELOG.md
+git commit -m "chore: prepare release v1.x.x"
+
+# 3. Create and push tag
+git tag -a v1.x.x -m "Release v1.x.x"
+git push origin v1.x.x
+```
+
+The workflow will automatically:
+- Build arm64 and x86_64 binaries
+- Create GitHub Release with binaries and source archive
+- Update Homebrew tap formula with new SHA256 hashes
+
+### Publishing Skills to ClawdHub
+
+To publish the Agent Skill to ClawdHub:
+
+```bash
+# Package the skill
+./scripts/package-clawdhub.sh 1.0.0
+
+# Options:
+./scripts/package-clawdhub.sh --help      # Show usage
+./scripts/package-clawdhub.sh --dry-run   # Preview without creating zip
+```
+
+Then upload at https://clawdhub.com/publish
+
+See `skills/healthkit-sync/HOWTO_CLAWDHUB.md` for detailed instructions.
+
+---
+
 ## 📚 Additional Resources
 
 - [Architecture Overview](DOCS/learn/02-architecture.md)
