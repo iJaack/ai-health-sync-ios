@@ -81,3 +81,9 @@ fastlane/test_output
 
 # Claude Code
 .claude/
+
+# Build artifacts
+dist/
+
+# Homebrew tap (separate repo)
+homebrew-tap/
