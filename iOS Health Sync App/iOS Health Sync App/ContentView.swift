@@ -74,16 +74,36 @@ struct ContentView: View {
         }
     }
 
+    private var serverStatusText: String {
+        if appState.isServerRunning && appState.isBackgroundActive {
+            return "Running (Background)"
+        } else if appState.isServerRunning {
+            return "Running"
+        } else {
+            return "Stopped"
+        }
+    }
+
+    private var serverStatusColor: Color {
+        if appState.isServerRunning && appState.isBackgroundActive {
+            return .orange
+        } else if appState.isServerRunning {
+            return .green
+        } else {
+            return .secondary
+        }
+    }
+
     private var serverSection: some View {
         Section("Sharing Server") {
             // Status indicator with animated symbol
             HStack {
                 Image(systemName: appState.isServerRunning ? "antenna.radiowaves.left.and.right" : "antenna.radiowaves.left.and.right.slash")
-                    .foregroundStyle(appState.isServerRunning ? .green : .secondary)
+                    .foregroundStyle(serverStatusColor)
                     .symbolEffect(.variableColor, isActive: appState.isServerRunning)
                 Text("Status")
                 Spacer()
-                Text(appState.isServerRunning ? "Running" : "Stopped")
+                Text(serverStatusText)
                     .foregroundStyle(.secondary)
             }
 
@@ -222,9 +242,15 @@ struct ContentView: View {
                 }
 
                 // Info about background mode
-                Label("Server stays active in background", systemImage: "checkmark.circle")
-                    .font(.caption)
-                    .foregroundStyle(.green)
+                if appState.isBackgroundActive {
+                    Label("Server active in background via audio session", systemImage: "moon.fill")
+                        .font(.caption)
+                        .foregroundStyle(.orange)
+                } else {
+                    Label("Server stays active in background", systemImage: "checkmark.circle")
+                        .font(.caption)
+                        .foregroundStyle(.green)
+                }
             } else {
                 // Empty state with glass styling
                 ContentUnavailableView {

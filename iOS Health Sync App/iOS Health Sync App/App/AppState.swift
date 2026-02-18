@@ -28,6 +28,7 @@ final class AppState {
     var isServerRunning: Bool = false
     var isServerStarting: Bool = false
     var isRefreshing: Bool = false
+    var isBackgroundActive: Bool = false
     var serverPort: Int = 0
     var serverFingerprint: String = ""
     var lastError: String?
@@ -244,8 +245,15 @@ final class AppState {
             backgroundTaskController.endIfNeeded()
             // Stop background audio when returning to foreground — not needed while visible
             backgroundAudio.stop()
+            isBackgroundActive = false
+            // Verify server is still alive after returning from background.
+            // iOS may have killed the NWListener despite the audio session.
+            if isServerRunning {
+                Task { await verifyAndRestoreServer() }
+            }
         case .background:
             guard isServerRunning else { return }
+            isBackgroundActive = true
             // Start silent audio to keep the app alive in background.
             // iOS allows apps with the `audio` background mode to run indefinitely
             // as long as an AVAudioSession is active. This replaces the ~30s grace period
@@ -259,6 +267,20 @@ final class AppState {
             break
         @unknown default:
             break
+        }
+    }
+
+    /// Checks if the server is still alive after returning from background.
+    /// If the NWListener was killed by iOS, automatically restarts the server.
+    private func verifyAndRestoreServer() async {
+        let snapshot = await networkServer.snapshot()
+        if snapshot.port == 0 {
+            // Server died in background — restart it silently
+            AppLoggers.app.warning("Server was killed in background — restarting automatically.")
+            isServerRunning = false
+            await startServer()
+        } else {
+            AppLoggers.app.info("Server verified alive after background return (port: \(snapshot.port)).")
         }
     }
 
