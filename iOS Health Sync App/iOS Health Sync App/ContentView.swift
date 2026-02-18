@@ -221,10 +221,10 @@ struct ContentView: View {
                     }
                 }
 
-                // Info about keeping app in foreground
-                Label("Keep the app open for best reliability", systemImage: "info.circle")
+                // Info about background mode
+                Label("Server stays active in background", systemImage: "checkmark.circle")
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.green)
             } else {
                 // Empty state with glass styling
                 ContentUnavailableView {

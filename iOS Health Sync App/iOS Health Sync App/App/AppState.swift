@@ -20,6 +20,7 @@ final class AppState {
     private let networkServer: NetworkServer
     private let backgroundTaskManager: BackgroundTaskManaging
     private let backgroundTaskController: BackgroundTaskController
+    private let backgroundAudio = BackgroundAudioPlayer()
     private var notificationTask: Task<Void, Never>?
 
     var syncConfiguration: SyncConfiguration
@@ -83,8 +84,9 @@ final class AppState {
         self.protectedDataAvailable = UIApplication.shared.isProtectedDataAvailable
         self.backgroundTaskController.setOnExpiration { [weak self] in
             guard let self else { return }
-            AppLoggers.app.info("Background time expired; stopping server for safety.")
-            Task { await self.stopServer() }
+            // Background task expired, but audio session keeps us alive.
+            // Don't stop the server — just log and let the audio background mode handle persistence.
+            AppLoggers.app.info("Background task expired; server continues via audio session.")
         }
         // Notification observers are started from the App entry point on the main actor.
     }
@@ -215,6 +217,7 @@ final class AppState {
         pairingQRCode = nil
         await auditService.record(eventType: "api.server_stop", details: [:])
         backgroundTaskController.endIfNeeded()
+        backgroundAudio.stop()
         UIApplication.shared.isIdleTimerDisabled = false
     }
 
@@ -238,12 +241,18 @@ final class AppState {
         switch newPhase {
         case .active:
             backgroundTaskController.endIfNeeded()
+            // Stop background audio when returning to foreground — not needed while visible
+            backgroundAudio.stop()
         case .background:
             guard isServerRunning else { return }
-            // Background tasks are time-limited; this is a best-effort grace period.
-            // If the system denies the task, the OS may suspend networking shortly after.
+            // Start silent audio to keep the app alive in background.
+            // iOS allows apps with the `audio` background mode to run indefinitely
+            // as long as an AVAudioSession is active. This replaces the ~30s grace period
+            // from beginBackgroundTask with persistent background execution.
+            backgroundAudio.start()
+            // Also request the legacy background task as a safety net
             if !backgroundTaskController.beginIfNeeded() {
-                AppLoggers.app.info("Background task denied; sharing may pause while app is suspended.")
+                AppLoggers.app.info("Background task denied; relying on audio session for background execution.")
             }
         case .inactive:
             break
